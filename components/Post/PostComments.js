@@ -16,7 +16,9 @@ const PostComments = ({ comment, user, setComments, postId }) => {
               {comment.user.name}
             </Comment.Author>
             <Comment.Metadata>{calculateTime(comment.date)}</Comment.Metadata>
+
             <Comment.Text>{comment.text}</Comment.Text>
+
             <Comment.Actions>
               <Comment.Action>
                 {(user.role === "root" || comment.user._id === user._id) && (

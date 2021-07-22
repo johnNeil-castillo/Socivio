@@ -68,7 +68,7 @@ export const postComment = async (postId, user, text, setComments, setText) => {
       date: Date.now(),
     };
 
-    setComments((prev) => [newComment, ...prev]);
+    setComments((prev) => [...prev, newComment]);
     setText("");
   } catch (error) {
     alert(catchErrors(error));
