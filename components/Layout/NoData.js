@@ -41,3 +41,7 @@ export const NoPosts = () => (
 export const NoProfile = () => (
   <Segment size="mini" content="No Profile Found." />
 );
+
+export const NoNotifications = () => <Segment content="No Notifications" />;
+
+export const NoPostFound = () => <Segment content="No Post Found." />;

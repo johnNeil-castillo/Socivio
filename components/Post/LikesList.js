@@ -4,6 +4,7 @@ import axios from "axios";
 import baseUrl from "../../utils/baseUrl";
 import catchErrors from "../../utils/catchErrors";
 import cookie from "js-cookie";
+import Link from "next/link";
 
 import { LikesPlaceHolder } from "../Layout/PlaceHolderGroup";
 
@@ -50,8 +51,9 @@ const LikesList = ({ postId, trigger }) => {
                   <List.Item key={like._id}>
                     <Image avatar src={like.user.profilePicUrl} />
                     <List.Content>
-                      <Link href={`/${like.user.username}`}></Link>
-                      <List.Header as="a" content={like.user.name} />
+                      <Link href={`/${like.user.username}`}>
+                        <List.Header as="a" content={like.user.name} />
+                      </Link>
                     </List.Content>
                   </List.Item>
                 ))}
