@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 module.exports = (req, res, next) => {
   try {
     if (!req.headers.authorization) {
-      return res.status(401).send("Unauthorized");
+      return res.status(401).send(`Unauthorized`);
     }
 
     const { userId } = jwt.verify(
@@ -12,10 +12,9 @@ module.exports = (req, res, next) => {
     );
 
     req.userId = userId;
-
     next();
   } catch (error) {
     console.error(error);
-    return res.status(401).send("Unauthorized");
+    return res.status(401).send(`Unauthorized`);
   }
 };

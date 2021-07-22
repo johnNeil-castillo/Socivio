@@ -25,7 +25,6 @@ router.post("/", authMiddleware, async (req, res) => {
       user: req.userId,
       text,
     };
-
     if (location) newPost.location = location;
     if (picUrl) newPost.picUrl = picUrl;
 
@@ -34,7 +33,6 @@ router.post("/", authMiddleware, async (req, res) => {
     const postCreated = await PostModel.findById(post._id).populate("user");
 
     return res.json(postCreated);
-    // return res.json(post._id);
   } catch (error) {
     console.error(error);
     return res.status(500).send(`Server error`);
