@@ -24,12 +24,10 @@ export const registerUser = async (
   setLoading(false);
 };
 
-export const loggedinUser = async (user, setError, setLoading) => {
+export const loginUser = async (user, setError, setLoading) => {
   setLoading(true);
   try {
-    const res = await axios.post(`${baseUrl}/api/auth`, {
-      user,
-    });
+    const res = await axios.post(`${baseUrl}/api/auth`, { user });
 
     setToken(res.data);
   } catch (error) {
@@ -48,14 +46,14 @@ export const redirectUser = (ctx, location) => {
   }
 };
 
+const setToken = (token) => {
+  cookie.set("token", token);
+  Router.push("/");
+};
+
 export const logoutUser = (email) => {
   cookie.set("userEmail", email);
   cookie.remove("token");
   Router.push("/login");
   Router.reload();
-};
-
-const setToken = (token) => {
-  cookie.set("token", token);
-  Router.push("/");
 };
