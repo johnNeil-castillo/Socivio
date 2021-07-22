@@ -276,7 +276,7 @@ router.post("/comment/:postId", authMiddleware, async (req, res) => {
       date: Date.now(),
     };
 
-    await post.comments.unshift(newComment);
+    await post.comments.push(newComment);
     await post.save();
 
     if (post.user.toString() !== userId) {
